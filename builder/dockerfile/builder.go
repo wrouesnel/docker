@@ -28,6 +28,7 @@ var validCommitCommands = map[string]bool{
 	"user":       true,
 	"volume":     true,
 	"workdir":    true,
+	"log":		  true,
 }
 
 // BuiltinAllowedBuildArgs is list of built-in allowed build args

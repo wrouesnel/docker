@@ -65,6 +65,7 @@ type CommonContainer struct {
 	HasBeenStartedBefore   bool
 	HasBeenManuallyStopped bool // used for unless-stopped restart policy
 	MountPoints            map[string]*volume.MountPoint
+	//LogPipes			   map[string]
 	hostConfig             *runconfig.HostConfig
 	command                *execdriver.Command
 	monitor                *containerMonitor

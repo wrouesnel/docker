@@ -65,6 +65,7 @@ func init() {
 		command.Volume:     parseMaybeJSONToList,
 		command.StopSignal: parseString,
 		command.Arg:        parseNameOrNameVal,
+		command.Log:		parseStringsWhitespaceDelimited,
 	}
 }
 

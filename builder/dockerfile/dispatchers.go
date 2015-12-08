@@ -539,6 +539,26 @@ func expose(b *Builder, args []string, attributes map[string]bool, original stri
 	return b.commit("", b.runConfig.Cmd, fmt.Sprintf("EXPOSE %s", strings.Join(portList, " ")))
 }
 
+// LOG logfile
+//
+// Create fifos for log collection into the docker daemon.
+//
+func log(b *Builder, args []string, attributes map[string]bool, original string) error {
+	logsTab := args
+
+	if len(args) == 0 {
+		return derr.ErrorCodeAtLeastOneArg.WithArgs("LOG")
+	}
+
+	if err := b.flags.Parse(); err != nil {
+		return err
+	}
+
+	if b.runConfig.Logs == nil {
+		b.runConfig.Logs = make()
+	}
+}
+
 // USER foo
 //
 // Set the user to 'foo' for future commands and when running the

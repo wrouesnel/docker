@@ -19,6 +19,7 @@ const (
 	User       = "user"
 	StopSignal = "stopsignal"
 	Arg        = "arg"
+	Log		   = "log"
 )
 
 // Commands is list of all Dockerfile commands
@@ -39,4 +40,5 @@ var Commands = map[string]struct{}{
 	User:       {},
 	StopSignal: {},
 	Arg:        {},
+	Log:		{},
 }
