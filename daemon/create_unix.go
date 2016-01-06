@@ -12,6 +12,7 @@ import (
 	"github.com/docker/docker/runconfig"
 	"github.com/docker/docker/volume"
 	"github.com/opencontainers/runc/libcontainer/label"
+	"syscall"
 )
 
 // createContainerPlatformSpecificSettings performs platform specific container create functionality
@@ -68,5 +69,19 @@ func (daemon *Daemon) createContainerPlatformSpecificSettings(container *Contain
 
 		container.addMountPointWithVolume(destination, v, true)
 	}
+
+	for path, params := range config.Logs {
+		type logSpec struct {
+			Mode os.FileMode
+			LogName string
+		}
+
+		pipepath := filepath.Clean(path)
+		err := syscall.Mkfifo(pipepath, logSpec(params).Mode)
+		if err != nil {
+			return derr.ErrorCodeLoggingFactory.WithArgs(path, params)
+		}
+	}
+
 	return nil
 }

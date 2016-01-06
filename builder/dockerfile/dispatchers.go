@@ -557,6 +557,9 @@ func log(b *Builder, args []string, attributes map[string]bool, original string)
 	if b.runConfig.Logs == nil {
 		b.runConfig.Logs = make()
 	}
+
+	sort.Strings(portList)
+	return b.commit("", b.runConfig.Cmd, fmt.Sprintf("EXPOSE %s", strings.Join(portList, " ")))
 }
 
 // USER foo

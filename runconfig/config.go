@@ -41,7 +41,7 @@ type Config struct {
 	OnBuild         []string              // ONBUILD metadata that were defined on the image Dockerfile
 	Labels          map[string]string     // List of labels set to this container
 	StopSignal      string                `json:",omitempty"` // Signal to stop a container
-	Logs			map[string]struct{}	  // List of log FIFO pipes used for the container
+	Logs			map[string]struct{}	  `json:",omitempty"` // List of log FIFO pipes used for the container
 }
 
 // DecodeContainerConfig decodes a json encoded config into a ContainerConfigWrapper

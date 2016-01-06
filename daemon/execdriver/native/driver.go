@@ -31,7 +31,7 @@ import (
 // Define constants for native driver
 const (
 	DriverName = "native"
-	Version    = "0.2"
+	Version = "0.2"
 )
 
 // Driver contains all information for native driver,
